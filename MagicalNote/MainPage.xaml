@@ -1,0 +1,118 @@
+﻿<Page
+    x:Class="MagicalNote.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:MagicalNote"
+    xmlns:dto="using:MagicalNote.Dto"
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Page.Resources>
+        <DataTemplate x:Key="BasicListViewTemplate" x:DataType="dto:EditLineModel">
+            <TextBlock FontSize="14" Text="{x:Bind Index}" x:Phase="1" TextAlignment="Center"/>
+        </DataTemplate>
+    </Page.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="1" />
+            <RowDefinition Height="25" />
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Grid.Column="0" Width="Auto">
+            <Border BorderThickness="0" BorderBrush="#ccc">
+                <muxc:MenuBar Name="filebar">
+                    <muxc:MenuBarItem Title="文件">
+                        <MenuFlyoutItem x:Name="o1" Text="新建" Click="CreateFile" />
+                        <MenuFlyoutItem x:Name="o2" Text="打开" Click="OpenFile"/>
+                        <MenuFlyoutItem x:Name="o3" Text="保存" Click="Save"/>
+                    </muxc:MenuBarItem>
+
+                    <muxc:MenuBarItem Title="编辑">
+                        <MenuFlyoutItem x:Name="BarCut" Text="剪切" Click="BarCut_Click"/>
+                        <MenuFlyoutItem x:Name="BarCopy" Text="复制" Click="BarCopy_Click"/>
+                        <MenuFlyoutItem x:Name="BarPast" Text="粘贴" Click="BarPast_Click"/>
+                    </muxc:MenuBarItem>
+
+                    <muxc:MenuBarItem Title="搜索"  IsEnabled="false">
+                        <MenuFlyoutItem x:Name="o9" Text="关于"/>
+                    </muxc:MenuBarItem>
+
+                    <muxc:MenuBarItem Title="视图" IsEnabled="false">
+                        <MenuFlyoutItem x:Name="o10" Text="关于"/>
+                    </muxc:MenuBarItem>
+
+                    <muxc:MenuBarItem Title="编码" IsEnabled="false">
+                        <MenuFlyoutItem x:Name="o11" Text="关于"/>
+                    </muxc:MenuBarItem>
+
+                    <muxc:MenuBarItem Title="语言" IsEnabled="false">
+                        <MenuFlyoutItem x:Name="o12" Text="关于"/>
+                    </muxc:MenuBarItem>
+
+                    <muxc:MenuBarItem Title="设置" IsEnabled="false">
+                        <MenuFlyoutItem x:Name="o13" Text="关于"/>
+                    </muxc:MenuBarItem>
+
+                    <muxc:MenuBarItem Title="工具" IsEnabled="false">
+                        <MenuFlyoutItem x:Name="o14" Text="关于"/>
+                    </muxc:MenuBarItem>
+
+                    <muxc:MenuBarItem Title="插件" IsEnabled="false">
+                        <MenuFlyoutItem x:Name="o16" Text="关于"/>
+                    </muxc:MenuBarItem>
+
+                    <muxc:MenuBarItem Title="帮助" IsEnabled="false">
+                        <MenuFlyoutItem x:Name="o17" Text="关于"/>
+                    </muxc:MenuBarItem>
+                </muxc:MenuBar>
+            </Border>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Grid.Column="0"  Orientation="Horizontal" Width="Auto">
+            <Border BorderThickness="0" BorderBrush="#ccc" Width="Auto">
+                <CommandBar Background="Transparent" IsOpen="False" DefaultLabelPosition="Collapsed" Width="Auto" FontSize="12">
+                    <AppBarButton Icon="Bold" Label="Bold" Click="BoldButton_Click" />
+                    <AppBarButton Icon="Italic" Label="Italic" Click="ItalicButton_Click" />
+                    <AppBarButton Icon="Underline" Label="Underline" Click="UnderlineButton_Click" />
+                    <AppBarButton Icon="FontColor" Label="FontColor" Visibility="Collapsed"/>
+                    <AppBarButton Icon="FontDecrease" Label="FontDecrease" Click="FontDecreaseButton_Click"/>
+                    <AppBarButton Icon="FontIncrease" Label="FontIncrease" Click="FontIncreaseButton_Click"/>
+                    <AppBarButton Icon="FontSize" Label="FontSize" Visibility="Collapsed" />
+                    <AppBarButton Icon="Font" Label="Font" Visibility="Collapsed"/>
+                    <AppBarButton Icon="Link" Label="Link"  Visibility="Collapsed"/>
+                    <CommandBar.SecondaryCommands>
+                        <AppBarButton Icon="Setting" Label="Settings" Visibility="Collapsed">
+                            <AppBarButton.KeyboardAccelerators>
+                                <KeyboardAccelerator Modifiers="Control" Key="I" />
+                            </AppBarButton.KeyboardAccelerators>
+                        </AppBarButton>
+                    </CommandBar.SecondaryCommands>
+                </CommandBar>
+            </Border>
+        </StackPanel>
+        <Grid Grid.Row="2" Grid.Column="0" Width="Auto" Margin="-5 5 5 5" SizeChanged="OnGridSizeChanged">
+            <muxc:TabView x:Name="maintab" SelectedIndex="0"
+                          AddTabButtonClick="TabView_AddButtonClick" 
+                          TabCloseRequested="TabView_TabCloseRequested"
+                          Loaded="TabView_Loaded"/>
+        </Grid>
+        <Border Grid.Row="3" Grid.Column="0" BorderThickness="1" BorderBrush="#ccc">
+
+        </Border>
+        <TextBlock  Margin="4 0 0 0" Grid.Row="4" 
+                    TextAlignment="Justify"
+                    Text="MagicalConch">
+                <ToolTipService.ToolTip>
+                    <ToolTip Content="Offset ToolTip." VerticalOffset="-80"/>
+                </ToolTipService.ToolTip>
+        </TextBlock>
+    </Grid>
+</Page>

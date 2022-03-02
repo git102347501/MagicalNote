@@ -1,0 +1,47 @@
+﻿<Page
+    x:Class="MagicalNote.Pages.EditPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:MagicalNote.Pages"
+    xmlns:dto="using:MagicalNote.Dto"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Page.Resources>
+        <DataTemplate x:Key="BasicListViewTemplate" x:DataType="dto:EditLineModel">
+            <TextBlock FontSize="14" Height="12" Text="{x:Bind Index}" x:Phase="1" TextAlignment="Center"/>
+        </DataTemplate>
+        <Style x:Name="xx" TargetType="ListBoxItem">
+            <Style.Setters>
+                <Setter Property="Height" Value="24" />
+                <Setter Property="Width" Value="35" />
+                <Setter Property="VerticalContentAlignment" Value="Center" />
+                <Setter Property="HorizontalContentAlignment" Value="Center" />
+                <Setter Property="Padding" Value="0" />
+                <Setter Property="Margin" Value="0" />
+            </Style.Setters>
+        </Style>
+    </Page.Resources>
+    <ScrollViewer Height="Auto" ZoomMode="Enabled">
+        <Grid Width="Auto" Height="Auto">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="35"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="0" Orientation="Vertical" Padding="0,8,0,0">
+                <ListBox Name="mainlist" FontSize="14" Width="Auto" Height="Auto" ItemContainerStyle="{ThemeResource xx}"/>
+            </StackPanel>
+            <RichEditBox  x:FieldModifier="Public" x:Name="maintext" AcceptsReturn="True" TextWrapping="Wrap"
+                     ScrollViewer.VerticalScrollBarVisibility="Auto"
+                          Margin="4"
+                          TextChanged="maintext_TextChanged"
+                     Grid.Column="1" Width="Auto" Height="Auto" FontSize="14"  
+                     AutomationProperties.Name="输入文本"/>
+        </Grid>
+    </ScrollViewer>
+</Page>
