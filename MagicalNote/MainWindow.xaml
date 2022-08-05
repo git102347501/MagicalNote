@@ -72,22 +72,30 @@
         <StackPanel Grid.Row="1" Grid.Column="0"  Orientation="Horizontal" Width="Auto">
             <Border BorderThickness="0" BorderBrush="#ccc" Width="Auto">
                 <CommandBar Background="Transparent" IsOpen="False" DefaultLabelPosition="Collapsed" Width="Auto" FontSize="12">
-                    <AppBarButton Icon="Bold" Label="粗体" Click="BoldButton_Click" />
-                    <AppBarButton Icon="Italic" Label="斜体" Click="ItalicButton_Click" />
-                    <AppBarButton Icon="Underline" Label="下划线" Click="UnderlineButton_Click" />
-                    <AppBarButton Icon="FontColor" Label="字体颜色" Visibility="Collapsed"/>
-                    <AppBarButton Icon="FontDecrease" Label="字体减少" Click="FontDecreaseButton_Click"/>
-                    <AppBarButton Icon="FontIncrease" Label="字体增加" Click="FontIncreaseButton_Click"/>
-                    <AppBarButton Icon="FontSize" Label="字号" Visibility="Collapsed" />
-                    <AppBarButton Icon="Font" Label="字体" Visibility="Collapsed"/>
-                    <AppBarButton Icon="Link" Label="超链接"  Visibility="Collapsed"/>
-                    <CommandBar.SecondaryCommands>
-                        <AppBarButton Icon="Setting" Label="Settings" Visibility="Collapsed">
-                            <AppBarButton.KeyboardAccelerators>
-                                <KeyboardAccelerator Modifiers="Control" Key="I" />
-                            </AppBarButton.KeyboardAccelerators>
-                        </AppBarButton>
-                    </CommandBar.SecondaryCommands>
+                    <AppBarButton Label="粗体" Click="BoldButton_Click">
+                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE8DD;"/>
+                    </AppBarButton>
+                    <AppBarButton Label="斜体" Click="ItalicButton_Click" >
+                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE8DB;"/>
+                    </AppBarButton>
+                    <AppBarButton  Label="下划线" Click="UnderlineButton_Click" >
+                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE8DC;"/>
+                    </AppBarButton>
+                    <AppBarButton Label="字体颜色" Visibility="Collapsed">
+                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE8D3;"/>
+                    </AppBarButton>
+                    <AppBarButton  Label="字体减少" Click="FontDecreaseButton_Click">
+                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE8E7;"/>
+                    </AppBarButton>
+                    <AppBarButton Label="字体增加" Click="FontIncreaseButton_Click">
+                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE8E8;"/>
+                    </AppBarButton>
+                    <AppBarButton  Label="字号" Visibility="Collapsed" >
+                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE8E9;"/>
+                    </AppBarButton>
+                    <AppBarButton  Label="字体" Visibility="Collapsed">
+                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE8D2;"/>
+                    </AppBarButton>
                 </CommandBar>
             </Border>
         </StackPanel>

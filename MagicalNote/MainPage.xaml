@@ -109,7 +109,7 @@
         </Border>
         <TextBlock  Margin="4 0 0 0" Grid.Row="4" 
                     TextAlignment="Justify"
-                    Text="MagicalConch">
+                    Text="MagicalNote">
                 <ToolTipService.ToolTip>
                     <ToolTip Content="Offset ToolTip." VerticalOffset="-80"/>
                 </ToolTipService.ToolTip>

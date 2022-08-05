@@ -9,7 +9,7 @@
   <Identity
     Name="44894A8DA8CBA.MagicalNotePad"
     Publisher="CN=6661E4B8-2D3F-40D3-BF0D-51DD6DC7D3BB"
-    Version="0.1.0.0" />
+    Version="0.1.1.0" />
 
   <Properties>
     <DisplayName>MagicalNote</DisplayName>

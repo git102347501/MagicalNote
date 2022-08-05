@@ -18,6 +18,7 @@ using Windows.Foundation.Collections;
 using Windows.Storage;
 using Windows.Storage.Pickers;
 using Windows.Storage.Provider;
+using WinRT;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -100,8 +101,7 @@ namespace MagicalNote
         {
             TabViewItem newItem = new TabViewItem
             {
-                Header = $"新文件{index + 1}",
-                IconSource = new SymbolIconSource() { Symbol = Symbol.Document }
+                Header = $"New File {index + 1}"
             };
 
             // The content of the tab is often a frame that contains a page, though it could be any UIElement.
@@ -118,8 +118,7 @@ namespace MagicalNote
         {
             TabViewItem newItem = new TabViewItem
             {
-                Header = name,
-                IconSource = new SymbolIconSource() { Symbol = Symbol.Document }
+                Header = name
             };
 
             // The content of the tab is often a frame that contains a page, though it could be any UIElement.
@@ -136,13 +135,21 @@ namespace MagicalNote
 
         private async void OpenFile(object sender, RoutedEventArgs e)
         {
-            Windows.Storage.Pickers.FileOpenPicker open =
-               new Windows.Storage.Pickers.FileOpenPicker();
-            open.SuggestedStartLocation =
-                Windows.Storage.Pickers.PickerLocationId.DocumentsLibrary;
-            open.FileTypeFilter.Add(".txt");
+            var filePicker = new FileOpenPicker();
 
-            Windows.Storage.StorageFile file = await open.PickSingleFileAsync();
+            //filePicker.SuggestedStartLocation =
+            //    Windows.Storage.Pickers.PickerLocationId.DocumentsLibrary;
+            //filePicker.FileTypeFilter.Add(".txt");
+            ////Get the Window's HWND
+            //var hwnd = As<IWindowNative>().WindowHandle;
+
+            //Make folder Picker work in Win32
+
+            var hwnd = WinRT.Interop.WindowNative.GetWindowHandle(this);
+            WinRT.Interop.InitializeWithWindow.Initialize(filePicker, hwnd);
+            filePicker.FileTypeFilter.Add(".txt");
+
+            Windows.Storage.StorageFile file = await filePicker.PickSingleFileAsync();
 
             if (file != null)
             {
@@ -164,7 +171,12 @@ namespace MagicalNote
         private async void Save(object sender, RoutedEventArgs e)
         {
             TabViewItem tab = this.maintab.SelectedItem as TabViewItem;
+
             FileSavePicker savePicker = new FileSavePicker();
+
+            var hwnd = WinRT.Interop.WindowNative.GetWindowHandle(this);
+            WinRT.Interop.InitializeWithWindow.Initialize(savePicker, hwnd);
+
             savePicker.SuggestedStartLocation = PickerLocationId.DocumentsLibrary;
 
             // Dropdown of file types the user can save the file as

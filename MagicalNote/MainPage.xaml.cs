@@ -99,8 +99,7 @@ namespace MagicalNote
         {
             TabViewItem newItem = new TabViewItem
             {
-                Header = $"New File {index + 1}",
-                IconSource = new SymbolIconSource() { Symbol = Symbol.Document }
+                Header = $"New File {index + 1}"
             };
 
             // The content of the tab is often a frame that contains a page, though it could be any UIElement.
@@ -117,8 +116,7 @@ namespace MagicalNote
         {
             TabViewItem newItem = new TabViewItem
             {
-                Header = name,
-                IconSource = new SymbolIconSource() { Symbol = Symbol.Document }
+                Header = name
             };
 
             // The content of the tab is often a frame that contains a page, though it could be any UIElement.
